@@ -9,13 +9,13 @@
 
 /* Use a macro for logging */
 #ifdef DEBUG
-    #define log_info(logger_input)\
-        printf("%s", logger_input)
-    #define log_err(logger_input)\
-        fprintf(stderr, "%s", logger_input)
+#define log_info(logger_input)\
+    printf("%s", logger_input)
+#define log_err(logger_input)\
+    fprintf(stderr, "%s", logger_input)
 #else
-    #define log_info(logger_input)
-    #define log_err(logger_input)
+#define log_info(logger_input)
+#define log_err(logger_input)
 #endif
 
 /* Define error codes */
@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
     int event_fd;
     char key;
     struct input_event buffer;
-    
+
     /* open event file */
     event_fd = open(EVENT_FILE_PATH, O_RDONLY | O_NONBLOCK);
     if (event_fd == -1) {
